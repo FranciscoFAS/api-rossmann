@@ -7,19 +7,6 @@ from flask import Flask, request, Response
 TOKEN = '5959518810:AAFaeRvf8rj3L5M_Lxp_oWKCJh3s2wOtr14'
 chat_id = 1498955578
 
-#info about the bot
-#https://api.telegram.org/bot5959518810:AAFaeRvf8rj3L5M_Lxp_oWKCJh3s2wOtr14/getMe
-
-#get Updates
-#https://api.telegram.org/bot5959518810:AAFaeRvf8rj3L5M_Lxp_oWKCJh3s2wOtr14/getUpdates
-
-#Webhook
-#https://api.telegram.org/bot5959518810:AAFaeRvf8rj3L5M_Lxp_oWKCJh3s2wOtr14/setWebhook?url=
-
-#SendMessage
-#https://api.telegram.org/bot5959518810:AAFaeRvf8rj3L5M_Lxp_oWKCJh3s2wOtr14/sendMessage?chat_id=1498955578
-#&text=Hi Fernando.I am going good, tks!
-
 def send_message (chat_id, text):
     url = 'https://api.telegram.org/bot{}'.format( TOKEN )
     url = url + '/sendMessage?chat_id={}'.format( chat_id)
@@ -52,7 +39,7 @@ def load_dataset(store_id):
 
 def predict (data):
 
-    url = 'https://rossmann-store-sales.onrender.com'
+    url = 'https://rossmann-store-sales.onrender.com/rossmann/predict'
     header = {'Content-type': 'application/json'}
     data = data
 
@@ -81,7 +68,7 @@ def parse_message(message):
 
 app = Flask(__name__)
 
-@app.route('/rossmann/predict', methods=['GET', 'POST'])
+@app.route('/rossmann', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         message = request.get_json()
