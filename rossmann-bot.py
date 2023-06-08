@@ -52,7 +52,7 @@ def load_dataset(store_id):
 
 def predict (data):
 
-    url = 'https://rossmann-store-sales.onrender.com/rossmann/predict'
+    url = 'https://rossmann-store-sales.onrender.com'
     header = {'Content-type': 'application/json'}
     data = data
 
