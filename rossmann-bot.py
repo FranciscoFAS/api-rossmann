@@ -52,11 +52,11 @@ def load_dataset(store_id):
 
 def predict (data):
 
-    url = 'https://rossmann-store-sales.onrender.com'
+    url = 'https://rossmann-store-sales.onrender.com/rossmann/predict'
     header = {'Content-type': 'application/json'}
     data = data
 
-    r = requests.post(url=url, data=data, headers=header)
+    r = requests.post(url, data=data, headers=header)
     print('Status Code {}'.format(r.status_code))
 
     d1 = pd.DataFrame( r.json(), columns=r.json()[0].keys())
@@ -81,7 +81,7 @@ def parse_message(message):
 
 app = Flask(__name__)
 
-@app.route('/rossmann/predict', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         message = request.get_json()
