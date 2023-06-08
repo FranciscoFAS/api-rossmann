@@ -81,7 +81,7 @@ def parse_message(message):
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/rossmann/predict', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         message = request.get_json()
